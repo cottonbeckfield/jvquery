@@ -24,3 +24,22 @@ Glossary for the infamous Visneski
     "event_time": 1355517523
 }
 ```
+
+## Phrases to add
+ - Juice worth the squeeze
+ - Baby powder their feet
+ - At the end of the day
+ - Getting pregnant with other teams
+ - The sugar that helps make the medicine go down
+ - Taking away someone's birthday
+ - Making sure we're not destroying christmas
+ - Half pregnant
+ - They're a great American
+ - "Seems nice enough but I’m not exactly sure there is much going on between the ears "
+ - Press
+ - Dingus
+ - Let's rap about it on x day
+ - I drank his milkshake yesterday and he's probably a bit sore.
+ - mother fucking plato looking mother fucker
+ - Dropping the kids off at the pool
+ - Even I lose a marble or two once in a while.
