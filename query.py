@@ -79,6 +79,7 @@ def lambda_handler(data, context):
         "application/x-www-form-urlencoded"
     )
 
+    # https://docs.python.org/3/library/urllib.request.html#module-urllib.request
     urllib.request.urlopen(request).read()
 
     # Everything went fine.
