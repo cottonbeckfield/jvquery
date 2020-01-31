@@ -1,25 +1,10 @@
+# This is a script that expects a user to provide a phrase that JV says
+# and returns the human readable meaning back.
+# Creator: Cotton Beckfield, 1-31-2020
 import os
 import logging
+import json
 import urllib.request
-
-# Phrases TO-DO
-#  Juice worth the squeeze
-# - Baby powder their feet
-# - At the end of the day
-# - Getting pregnant with other teams
-# - The sugar that helps make the medicine go down
-# - Taking away someone's birthday
-# - Making sure we're not destroying christmas
-# - Half pregnant
-# - They're a great American
-# - "Seems nice enough but I’m not exactly sure there is much going on between the ears "
-# - Press
-# - Dingus
-# - Let's rap about it on x day
-# - I drank his milkshake yesterday and he's probably a bit sore.
-# - mother fucking plato looking mother fucker
-# - Dropping the kids off at the pool
-# - Even I lose a marble or two once in a while.
 
 # Environmental Variables
 BOT_TOKEN = os.environ["BOT_TOKEN"]
@@ -54,33 +39,22 @@ def lambda_handler(data, context):
     definition = jvdict[text]
     channel_id = slack_event["channel"]
 
-    # Format data and request values.
-    data = urllib.parse.urlencode(
-        (
-            ("token", BOT_TOKEN),
-            ("channel", channel_id),
-            ("term", text),
-            ("definition", definition)
-        )
-    )
-    data = data.encode("ascii")
+    print("Sending message to Slack: {}".format(text))
+    json_txt = json.dumps({
+        "channel": channel_id,
+        "text": definition
+    }).encode('utf8')
 
-    print(data)
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {}".format(BOT_TOKEN)
+    }
 
-    # Send definition back to Slack.
-    request = urllib.request.Request(
+    req = urllib.request.Request(
         SLACK_URL,
-        data=data,
-        method="POST"
+        data=json_txt,
+        headers=headers
     )
+    urllib.request.urlopen(req)
 
-    request.add_header(
-        "Content-Type",
-        "application/x-www-form-urlencoded"
-    )
-
-    # https://docs.python.org/3/library/urllib.request.html#module-urllib.request
-    urllib.request.urlopen(request).read()
-
-    # Everything went fine.
     return "200 OK"
