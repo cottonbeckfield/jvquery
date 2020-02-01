@@ -21,7 +21,11 @@ def lambda_handler(data, context):
     jvdict = {
         "hot wash":"lessons learned",
         "press": "move forward",
-        "They're a great American": "they are an idiot"
+        "They're a great American": "they are an idiot",
+        "Making sure we're not destroying christmas": "be cautious",
+        "Let's rap about it on x day": "schedule a meeting",
+        "Taking away someone's birthday": "we're going to make them upset",
+        "Baby powder their feet": "hold their hand"
     }
 
     # Handling some potential errors
